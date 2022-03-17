@@ -13,7 +13,7 @@ Launch Safari and Take Screenshot
     Setup Sikuli Process
     SeleniumLibrary.Open Browser    https://internal.swg.ai    Safari
     Click MacStartIcon
-    Sleep    4s
+    Sleep    30s
     Take Screenshot
 
 *** Keywords ***
