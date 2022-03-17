@@ -30,6 +30,7 @@ jobs:
           name: Run Sikuli
           command: |
             java -jar sikulixide-2.0.5-mac.jar -v -c
+          background: true
       # - run:
       #     name: Add VNC user
       #     command: |
