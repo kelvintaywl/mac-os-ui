@@ -23,12 +23,19 @@ jobs:
           command:
               /Library/Application\ Support/VMware\ Tools/vmware-resolutionSet 1280 768
       - run:
-          name: Add VNC user
+          name: Install Sikuli
           command: |
-              sudo /usr/sbin/sysadminctl -addUser vncuser -fullName "VNC User" -password Automation@1234 -admin
-              sleep 2
-              # sudo cp -r /Users/distiller/project/.circleci /Users/vncuser/
-
+            curl -L --output sikulixide-2.0.5-mac.jar https://launchpad.net/sikuli/sikulix/2.0.5/+download/sikulixide-2.0.5-mac.jar
+      - run:
+          name: Run Sikuli
+          command: |
+            java -jar sikulixide-2.0.5-mac.jar
+      # - run:
+      #     name: Add VNC user
+      #     command: |
+      #         sudo /usr/sbin/sysadminctl -addUser vncuser -fullName "VNC User" -password Automation@1234 -admin
+      #         sleep 2
+      #         # sudo cp -r /Users/distiller/project/.circleci /Users/vncuser/
       - run:
           name: Installing Robot Framework (Mac)
           command: |
@@ -38,9 +45,6 @@ jobs:
               pip3 install robotframework-pabot
               pip3 install robotframework-SikuliLibrary
               mkdir test_results
-
-
-
       - run:
           name: BAT Tests
           command: |
