@@ -27,7 +27,7 @@ jobs:
           command: |
               sudo /usr/sbin/sysadminctl -addUser vncuser -fullName "VNC User" -password Automation@1234 -admin
               sleep 2
-              sudo cp -r /Users/distiller/project/.circleci /Users/vncuser/
+              # sudo cp -r /Users/distiller/project/.circleci /Users/vncuser/
 
       - run:
           name: Installing Robot Framework (Mac)
@@ -46,8 +46,10 @@ jobs:
           command: |
               echo "Starting BAT Tests"
               robot -d test_results/ -i Mac -d robot/results/mac/ robot/temp_test/test.robot
-      - run: |
-          ls -laH
+      - run:
+          command: |
+            ls -laH
+          when: always
       - store_test_results:
           path: robot/results
 
