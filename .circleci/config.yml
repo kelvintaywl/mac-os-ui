@@ -22,15 +22,15 @@ jobs:
           name: Setting Screen Resolution
           command:
               /Library/Application\ Support/VMware\ Tools/vmware-resolutionSet 1280 768
-      - run:
-          name: Install Sikuli
-          command: |
-            curl -L --output sikulixide-2.0.5-mac.jar https://launchpad.net/sikuli/sikulix/2.0.5/+download/sikulixide-2.0.5-mac.jar
-      - run:
-          name: Run Sikuli
-          command: |
-            java -jar sikulixide-2.0.5-mac.jar -v -c
-          background: true
+      # - run:
+      #     name: Install Sikuli
+      #     command: |
+      #       curl -L --output sikulixide-2.0.5-mac.jar https://launchpad.net/sikuli/sikulix/2.0.5/+download/sikulixide-2.0.5-mac.jar
+      # - run:
+      #     name: Run Sikuli
+      #     command: |
+      #       java -jar sikulixide-2.0.5-mac.jar -v -c
+      #     background: true
       # - run:
       #     name: Add VNC user
       #     command: |
