@@ -18,25 +18,10 @@ jobs:
           bundle-id: "com.apple.Terminal"
           permission-type: "kTCCServiceAccessibility"
       - macos/list-permissions
-      - run:
-          name: Setting Screen Resolution
-          command:
-              /Library/Application\ Support/VMware\ Tools/vmware-resolutionSet 1280 768
       # - run:
-      #     name: Install Sikuli
-      #     command: |
-      #       curl -L --output sikulixide-2.0.5-mac.jar https://launchpad.net/sikuli/sikulix/2.0.5/+download/sikulixide-2.0.5-mac.jar
-      # - run:
-      #     name: Run Sikuli
-      #     command: |
-      #       java -jar sikulixide-2.0.5-mac.jar -v -c
-      #     background: true
-      # - run:
-      #     name: Add VNC user
-      #     command: |
-      #         sudo /usr/sbin/sysadminctl -addUser vncuser -fullName "VNC User" -password Automation@1234 -admin
-      #         sleep 2
-      #         # sudo cp -r /Users/distiller/project/.circleci /Users/vncuser/
+      #     name: Setting Screen Resolution
+      #     command:
+      #         /Library/Application\ Support/VMware\ Tools/vmware-resolutionSet 1280 768
       - run:
           name: Installing Robot Framework (Mac)
           command: |
