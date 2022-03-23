@@ -1,8 +1,9 @@
 *** Settings ***
-Resource    ../variables/global_var_keywords.robot
-Library    SeleniumLibrary
-Library    SikuliLibrary    mode=NEW
-Library    Screenshot
+Resource        ../variables/global_var_keywords.robot
+Library         SeleniumLibrary
+Library         SikuliLibrary    mode=NEW
+Library         Screenshot
+Test Setup      Setup Sikuli Process
 
 *** Variables ***
 ${sikuli_images}    robot/sikuli_images/
@@ -10,8 +11,7 @@ ${sikuli_images}    robot/sikuli_images/
 *** Test Cases ***
 Launch Safari and Take Screenshot
     [tags]    Mac
-    Setup Sikuli Process
-    SeleniumLibrary.Open Browser    https://internal.swg.ai    Safari
+    # SeleniumLibrary.Open Browser    https://internal.swg.ai    Safari
     Open Mac Start Menu
     Sleep    5s
     Take Screenshot
@@ -23,4 +23,4 @@ Setup Sikuli Process
     Set Min Similarity    0.7
 
 Open Mac Start Menu
-    Click    macStartIcon.png
+    Double Click    macStartIcon.png
