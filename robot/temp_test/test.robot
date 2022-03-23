@@ -12,8 +12,8 @@ Launch Safari and Take Screenshot
     [tags]    Mac
     Setup Sikuli Process
     SeleniumLibrary.Open Browser    https://internal.swg.ai    Safari
-    Click MacStartIcon
-    Sleep    30s
+    Open Mac Start Menu
+    Sleep    5s
     Take Screenshot
 
 *** Keywords ***
@@ -22,5 +22,5 @@ Setup Sikuli Process
     Add Image Path    ${sikuli_images}
     Set Min Similarity    0.7
 
-Click MacStartIcon
-    SikuliLibrary.Click    macStartIcon.png
+Open Mac Start Menu
+    Click    macStartIcon.png
