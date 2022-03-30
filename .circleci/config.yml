@@ -5,8 +5,11 @@ orbs:
 
 jobs:
   bat-mac:
+    parameters:
+      xcode-version:
+        type: string
     macos:
-      xcode: 13.2.1
+      xcode: << parameters.xcode-version >>
     steps:
       - checkout
       - macos/add-uitest-permissions
@@ -49,4 +52,11 @@ jobs:
 workflows:
   big-mac:
     jobs:
-      - bat-mac
+      - bat-mac:
+          matrix:
+            parameters:
+              xcode-version:
+                - 13.3.0
+                - 12.5.1
+                - 11.7.0
+
