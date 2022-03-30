@@ -18,10 +18,10 @@ jobs:
           bundle-id: "com.apple.Terminal"
           permission-type: "kTCCServiceAccessibility"
       - macos/list-permissions
-      # - run:
-      #     name: Setting Screen Resolution
-      #     command:
-      #         /Library/Application\ Support/VMware\ Tools/vmware-resolutionSet 1280 768
+      - run:
+          name: Setting Screen Resolution
+          command:
+              /Library/Application\ Support/VMware\ Tools/vmware-resolutionSet 1280 768
       - run:
           name: Installing Robot Framework (Mac)
           command: |
