@@ -23,4 +23,4 @@ Setup Sikuli Process
     Set Min Similarity    0.7
 
 Open Mac Start Menu
-    Double Click    macStartIcon.png
+    Click    macStartIcon.png
