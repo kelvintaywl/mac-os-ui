@@ -11,7 +11,7 @@ jobs:
     macos:
       xcode: << parameters.xcode-version >>
     # try: see if gen2 somehow works
-    resource_class: macos.x86.medium.gen2
+    # resource_class: macos.x86.medium.gen2
     steps:
       - checkout
       - macos/add-uitest-permissions
@@ -37,6 +37,10 @@ jobs:
               pip3 install robotframework-SikuliLibrary
               mkdir test_results
       - run:
+          name: check log
+          command: tail -f ~/Library/Logs/CoreSimulator/*/system.log
+          background: true
+      - run:
           name: BAT Tests
           command: |
               echo "Starting BAT Tests"
@@ -59,6 +63,6 @@ workflows:
             parameters:
               xcode-version:
                 - 13.3.0
-                - 12.5.1
-                - 11.7.0
+#                 - 12.5.1
+#                 - 11.7.0
 
