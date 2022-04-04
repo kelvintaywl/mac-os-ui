@@ -10,6 +10,8 @@ jobs:
         type: string
     macos:
       xcode: << parameters.xcode-version >>
+    # try: see if gen2 somehow works
+    resource_class: macos.x86.medium.gen2
     steps:
       - checkout
       - macos/add-uitest-permissions
