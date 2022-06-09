@@ -1,9 +1,19 @@
 version: 2.1
 
 orbs:
-  macos: circleci/macos@2.1.0 
+  macos: circleci/macos@2.1.0
+  shallow: guitarrapc/git-shallow-clone@2.4.0
 
 jobs:
+  shallow-hal:
+    macos:
+      xcode: 13.3.0
+    steps:
+      - shallow/checkout
+      - run:
+          name: check
+          command: |
+            cat README.md
   bat-mac:
     parameters:
       xcode-version:
@@ -58,11 +68,12 @@ jobs:
 workflows:
   big-mac:
     jobs:
-      - bat-mac:
-          matrix:
-            parameters:
-              xcode-version:
-                - 13.3.0
-#                 - 12.5.1
-#                 - 11.7.0
+      - shallow-hal
+#       - bat-mac:
+#           matrix:
+#             parameters:
+#               xcode-version:
+#                 - 13.3.0
+# #                 - 12.5.1
+# #                 - 11.7.0
 
