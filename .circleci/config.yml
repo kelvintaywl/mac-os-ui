@@ -11,7 +11,9 @@ jobs:
       - run: |
           pwd
       - run: |
-          cd /usr/local/src
+          mkdir -p src/hoge
+          cd src
+          pwd
       - run: |
           pwd
       - run: |
