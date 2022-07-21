@@ -4,65 +4,25 @@ orbs:
   macos: circleci/macos@2.1.0 
 
 jobs:
-  bat-mac:
+  disk:
     parameters:
       xcode-version:
         type: string
     macos:
       xcode: << parameters.xcode-version >>
-    # try: see if gen2 somehow works
-    # resource_class: macos.x86.medium.gen2
     steps:
-      - checkout
-      - macos/add-uitest-permissions
-      - macos/add-safari-permissions
-      - macos/add-permission:
-          bundle-id: "com.apple.Terminal"
-          permission-type: "kTCCServiceScreenCapture"
-      - macos/add-permission:
-          bundle-id: "com.apple.Terminal"
-          permission-type: "kTCCServiceAccessibility"
-      - macos/list-permissions
       - run:
-          name: Setting Screen Resolution
-          command:
-              /Library/Application\ Support/VMware\ Tools/vmware-resolutionSet 1280 768
-      - run:
-          name: Installing Robot Framework (Mac)
+          name: check disk
           command: |
-              echo "Mac Machine is up"
-              pip3 install robotframework
-              pip3 install robotframework-seleniumlibrary
-              pip3 install robotframework-pabot
-              pip3 install robotframework-SikuliLibrary
-              mkdir test_results
-      - run:
-          name: check log
-          command: tail -f ~/Library/Logs/CoreSimulator/*/system.log
-          background: true
-      - run:
-          name: BAT Tests
-          command: |
-              echo "Starting BAT Tests"
-              robot -d test_results/ -i Mac -d robot/results/mac/ robot/temp_test/test.robot
-      - run:
-          command: |
-            ls -laH
-          when: always
-      - store_test_results:
-          path: robot/results
-
-      - store_artifacts:
-          path: robot/results
+            df -H
 
 workflows:
   big-mac:
     jobs:
-      - bat-mac:
+      - disk:
           matrix:
             parameters:
               xcode-version:
-                - 13.3.0
-#                 - 12.5.1
-#                 - 11.7.0
+                - 13.2.0
+                - 12.4.0
 
