@@ -19,10 +19,11 @@ jobs:
 workflows:
   big-mac:
     jobs:
+      # see https://circleci.com/docs/using-macos#macos-vm-storage
       - disk:
           matrix:
             parameters:
               xcode-version:
-                - 13.2.0
-                - 12.4.0
+                - 13.2.0  # should see 23GB
+                - 12.5.1  # should see 100GB
 
